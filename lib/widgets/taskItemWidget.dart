@@ -1,8 +1,9 @@
 import 'package:flutter/material.dart';
 
 class TaskItem extends StatelessWidget {
-  TaskItem({@required this.taskName});
+  TaskItem({@required this.taskName, this.onDelete});
   final String taskName;
+  final Function onDelete;
   @override
   Widget build(BuildContext context) {
     return Container(
@@ -12,9 +13,12 @@ class TaskItem extends StatelessWidget {
         crossAxisAlignment: CrossAxisAlignment.center,
         children: [
           Text(taskName),
-          Icon(
-            Icons.delete,
-            color: Colors.red[800],
+          GestureDetector(
+            onTap: onDelete,
+            child: Icon(
+              Icons.delete,
+              color: Colors.red[800],
+            ),
           )
         ],
       ),
